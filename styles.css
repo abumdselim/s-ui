@@ -740,9 +740,16 @@ h2 {
   .hero { padding-top: 138px; }
   .two-col { grid-template-columns: 1fr; }
   .hero-copy { align-items: center; text-align: center; }
-  .hero-claim { justify-content: center; }
-  .hero-claim .input-wrap-claim { flex: 1 1 100%; }
-  .hero-claim .btn { flex: 1 1 100%; width: min(312px, 100%); }
+  .hero-claim {
+    flex-direction: column; align-items: stretch; gap: 10px;
+    max-width: 351px; margin-inline: auto;
+    border-radius: 0; box-shadow: none;
+  }
+  .hero-claim .input-wrap-claim {
+    border-radius: 14px; height: 60px; padding: 0 18px;
+    box-shadow: 0 10px 26px rgba(37, 79, 26, 0.14);
+  }
+  .hero-claim .btn { border-radius: 999px; width: 100%; }
   .hero-feedback { text-align: center; }
   .hero-strip { height: 340px; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
   .hero-track { flex-direction: row; gap: 24px; }
