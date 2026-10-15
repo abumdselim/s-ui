@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In or Sign Up | Linktree</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23254F1A'/%3E%3Cpath fill='%23D2E823' d='M16 5.5c2.9 0 4.9 1.9 4.9 4.2 0 .6-.1 1.1-.4 1.6 1.9.8 3.1 2.3 3.1 4 0 .9-.3 1.7-.9 2.4 1.4.9 2.3 2.2 2.3 3.6 0 2.6-2.6 4.7-5.9 4.7h-.4v2a1.2 1.2 0 0 1-2.4 0v-2h-.4c-3.3 0-5.9-2.1-5.9-4.7 0-1.4.9-2.7 2.3-3.6-.6-.7-.9-1.5-.9-2.4 0-1.7 1.2-3.2 3.1-4-.3-.5-.4-1-.4-1.6 0-2.3 2-4.2 4.9-4.2Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<main class="auth-layout">
+
+  <!-- ============ form pane ============ -->
+  <section class="auth-pane">
+    <div class="auth-topbar">
+      <a class="brand" href="index.html" aria-label="Back to Linktree home">
+        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="#254F1A" d="M16 4.5c2.9 0 4.9 1.9 4.9 4.2 0 .6-.1 1.1-.4 1.6 1.9.8 3.1 2.3 3.1 4 0 .9-.3 1.7-.9 2.4 1.4.9 2.3 2.2 2.3 3.6 0 2.6-2.6 4.7-5.9 4.7h-.4v2.4a1.2 1.2 0 0 1-2.4 0v-2.4h-.4c-3.3 0-5.9-2.1-5.9-4.7 0-1.4.9-2.7 2.3-3.6-.6-.7-.9-1.5-.9-2.4 0-1.7 1.2-3.2 3.1-4-.3-.5-.4-1-.4-1.6 0-2.3 2-4.2 4.9-4.2Z"/></svg>
+        <svg class="logo-word" viewBox="0 0 118 24" aria-hidden="true"><text x="0" y="19" font-family="Inter, sans-serif" font-size="21" font-weight="800" letter-spacing="-0.8" fill="#1E2330">Linktree</text></svg>
+      </a>
+      <a class="btn-social" style="width:auto;height:42px;padding:0 20px;border-radius:999px" href="login.html">Log in</a>
+    </div>
+
+    <div class="auth-card">
+
+      <!-- step 1: email -->
+      <div class="auth-step" data-step="1">
+        <h1>Join Linktree</h1>
+        <p class="auth-sub">Sign up for free!</p>
+
+        <form id="regEmailForm" novalidate>
+          <div class="field">
+            <label class="field-label" for="regEmail">Email</label>
+            <div class="input-wrap" id="regEmailWrap">
+              <input id="regEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" autofocus>
+            </div>
+            <p class="field-error" id="regEmailError">Please enter a valid email address.</p>
+          </div>
+
+          <button class="btn-primary" id="regEmailBtn" type="submit" disabled>Continue</button>
+        </form>
+
+        <p class="legal-note">By clicking Continue, you agree to Linktree’s <a href="#">privacy notice</a>, <a href="#">T&amp;Cs</a> and to receive offers, news and updates.</p>
+
+        <div class="auth-divider">OR</div>
+
+        <button class="btn-social" type="button" data-social="Google">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.6 2.8c2.2-2 3.8-5 3.8-8.5Z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.7-2.9l-3.6-2.8c-1 .7-2.3 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5l-3.8 2.9C3.3 21.3 7.3 24 12 24Z"/><path fill="#FBBC05" d="M5.3 14.5c-.2-.7-.4-1.5-.4-2.5s.2-1.7.4-2.5L1.5 6.6C.6 8.2 0 10 0 12s.5 3.8 1.5 5.4l3.8-2.9Z"/><path fill="#EA4335" d="M12 4.8c2.2 0 3.7.9 4.5 1.7l3.3-3.2C17.9 1.5 15.2 0 12 0 7.3 0 3.3 2.7 1.5 6.6l3.8 2.9c.9-2.9 3.6-4.7 6.7-4.7Z"/></svg>
+          Continue with Google
+        </button>
+        <button class="btn-social" type="button" data-social="Apple">
+          <svg viewBox="0 0 24 24" fill="#000" aria-hidden="true"><path d="M16.7 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7 1.4 0 1.8.7 3 .7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6-.1 0-2.6-1-2.6-3.5ZM14.4 5.9c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.4Z"/></svg>
+          Continue with Apple
+        </button>
+
+        <p class="auth-swap">Already have an account? <a href="login.html">Log in</a></p>
+      </div>
+
+      <!-- step 2: password + username -->
+      <div class="auth-step" data-step="2" hidden>
+        <a class="auth-back" href="#" data-back>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5 5 8l4.5 4.5"/></svg>
+          Back
+        </a>
+        <div class="step-dots" aria-hidden="true"><span class="on"></span><span></span></div>
+        <h1>Create your account</h1>
+        <p class="auth-sub" id="regEmailEcho">Add a password and pick your unique link.</p>
+
+        <form id="regPassForm" novalidate>
+          <div class="field">
+            <label class="field-label" for="regPass">Password</label>
+            <div class="input-wrap" id="regPassWrap">
+              <input id="regPass" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+              <button class="eye-btn" type="button" data-eye="regPass" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="pw-meter" id="pwMeter" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <p class="pw-meter-label" id="pwMeterLabel">Use 8+ characters with a mix of letters and numbers.</p>
+            <p class="field-error" id="regPassError">Password must be at least 8 characters.</p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="regUser">Claim your Linktree</label>
+            <div class="input-wrap" id="regUserWrap">
+              <span class="input-prefix">linktr.ee/</span>
+              <input id="regUser" type="text" autocomplete="username" placeholder="yourname" spellcheck="false">
+            </div>
+            <p class="field-hint" id="regUserHint">Your personal link — make it short and memorable.</p>
+            <p class="field-error" id="regUserError">Only letters, numbers, underscores and hyphens.</p>
+          </div>
+
+          <button class="btn-primary" id="regFinishBtn" type="submit" disabled>Create my Linktree</button>
+        </form>
+      </div>
+
+      <!-- step 3: success -->
+      <div class="auth-step" data-step="3" hidden>
+        <div class="auth-success">
+          <div class="success-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#254F1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+          </div>
+          <h2 id="successTitle">Your Linktree is live!</h2>
+          <p id="successEcho">This is a front-end demo — but your claim flow worked end to end.</p>
+          <div class="success-phone">
+            <svg viewBox="0 0 210 300" role="img" aria-label="Your new Linktree profile">
+              <rect width="210" height="300" fill="#E8EFD6"/>
+              <circle cx="105" cy="66" r="30" fill="#254F1A"/>
+              <text x="105" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-weight="800" fill="#D2E823" id="phoneInitial">Y</text>
+              <text x="105" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1E2330" id="phoneName">yourname</text>
+              <rect x="30" y="136" width="150" height="26" rx="13" fill="#254F1A"/>
+              <rect x="42" y="146" width="70" height="6" rx="3" fill="#D2E823" opacity=".7"/>
+              <rect x="30" y="170" width="150" height="26" rx="13" fill="#fff"/>
+              <rect x="42" y="180" width="88" height="6" rx="3" fill="#254F1A" opacity=".4"/>
+              <rect x="30" y="204" width="150" height="26" rx="13" fill="#E9C0E9"/>
+              <rect x="42" y="214" width="60" height="6" rx="3" fill="#780016" opacity=".5"/>
+              <rect x="30" y="248" width="150" height="26" rx="13" fill="#D2E823"/>
+              <rect x="42" y="258" width="80" height="6" rx="3" fill="#254F1A" opacity=".5"/>
+            </svg>
+          </div>
+          <a class="btn-primary" style="display:inline-flex;align-items:center;justify-content:center;width:auto;padding:0 32px" href="index.html">Back to home</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="auth-footer">
+      <a href="#" data-cookie-preferences>Cookie preferences</a>
+    </div>
+  </section>
+
+  <!-- ============ promo pane ============ -->
+  <aside class="promo-pane" aria-hidden="true">
+    <div class="promo-inner" id="promoRotator">
+
+      <div class="promo-quote-card on">
+        <div class="promo-avatars">
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#E8B4A0"/><circle cx="37" cy="30" r="14" fill="#7A4A32"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#780016"/></svg></span>
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#D2E823"/><circle cx="37" cy="30" r="14" fill="#254F1A"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#254F1A"/></svg></span>
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#E9C0E9"/><circle cx="37" cy="30" r="14" fill="#780016"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#502274"/></svg></span>
+        </div>
+        <p class="promo-quote">“I went from zero followers to a full-time creative business — and my Linktree was the front door to all of it.”</p>
+        <p class="promo-who"><strong>Maya R.</strong>Illustrator &amp; print shop owner</p>
+      </div>
+
+      <div class="promo-quote-card">
+        <div class="promo-avatars">
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#43E660"/><circle cx="37" cy="30" r="14" fill="#0F3D18"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#0F3D18"/></svg></span>
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#FF8A3D"/><circle cx="37" cy="30" r="14" fill="#7A3A18"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#1E2330"/></svg></span>
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#2665D6"/><circle cx="37" cy="30" r="14" fill="#10306B"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#10306B"/></svg></span>
+        </div>
+        <p class="promo-quote">“Every gig, single and merch drop lives on one link. My band’s Linktree is basically our home page now.”</p>
+        <p class="promo-who"><strong>The Night Owls</strong>Indie band, 320K monthly listeners</p>
+      </div>
+
+      <div class="promo-quote-card">
+        <div class="promo-avatars">
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#F3F3F1"/><circle cx="37" cy="30" r="14" fill="#1E2330"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#254F1A"/></svg></span>
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#780016"/><circle cx="37" cy="30" r="14" fill="#E9C0E9"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#E9C0E9"/></svg></span>
+          <span><svg viewBox="0 0 74 74"><rect width="74" height="74" fill="#502274"/><circle cx="37" cy="30" r="14" fill="#D2E823"/><path d="M15 74c4-16 12-24 22-24s18 8 22 24Z" fill="#D2E823"/></svg></span>
+        </div>
+        <p class="promo-quote">“70M+ people already trust Linktree for their link in bio. Your corner of the internet is one link away.”</p>
+        <p class="promo-who"><strong>Linktree</strong>Everything you are, in one simple link</p>
+      </div>
+
+      <div class="promo-dots" id="promoDots"></div>
+    </div>
+  </aside>
+
+</main>
+
+<script src="auth.js"></script>
+</body>
+</html>

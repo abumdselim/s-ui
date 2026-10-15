@@ -1,0 +1,339 @@
+/* ============================================================
+   Linktree clone — auth pages (login / register)
+   Design extracted from linktr.ee/universal-login
+   ============================================================ */
+
+:root {
+  --lime: #D2E823;
+  --forest: #254F1A;
+  --ink: #1E2330;
+  --paper: #FAF9F5;
+  --promo-blue: #2260C0;
+  --purple-accent: #7008E7;
+  --auth-gray: #6B7280;
+  --auth-border: rgba(4, 4, 3, 0.12);
+  --font: "Inter", "Link Sans Product", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  color: rgba(4, 4, 3, 0.9);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+.auth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 640px;
+  min-height: 100vh;
+}
+
+/* ---------------- left: form pane ---------------- */
+
+.auth-pane {
+  display: flex;
+  flex-direction: column;
+  padding: 24px clamp(24px, 6vw, 96px);
+}
+
+.auth-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 24px;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand .logo-mark { width: 34px; height: 34px; }
+.brand .logo-word { height: 20px; width: auto; }
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  margin: clamp(24px, 6vh, 72px) auto 0;
+  flex: 1;
+}
+
+.auth-card h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.auth-sub {
+  margin-top: 10px;
+  font-size: 16.5px;
+  color: rgba(4, 4, 3, 0.72);
+}
+
+/* step 2 header */
+.auth-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 500; color: var(--auth-gray);
+  margin-bottom: 18px;
+  transition: color 0.15s;
+}
+.auth-back:hover { color: var(--ink); }
+.auth-back svg { width: 16px; height: 16px; }
+
+.step-dots { display: flex; gap: 6px; margin: 18px 0 26px; }
+.step-dots span {
+  height: 6px; width: 6px; border-radius: 999px;
+  background: rgba(4, 4, 3, 0.15);
+  transition: width 0.25s var(--ease), background-color 0.25s;
+}
+.step-dots span.on { width: 22px; background: var(--ink); }
+
+/* fields */
+.field {
+  margin-top: 18px;
+}
+.field-label {
+  display: block;
+  font-size: 13.5px; font-weight: 600;
+  color: rgba(4, 4, 3, 0.62);
+  margin-bottom: 8px;
+}
+
+.input-wrap {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff;
+  border: 0.8px solid var(--auth-border);
+  border-radius: 16px;
+  height: 56px;
+  padding: 0 18px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input-wrap:focus-within {
+  border-color: rgba(4, 4, 3, 0.55);
+  box-shadow: 0 0 0 3px rgba(4, 4, 3, 0.06);
+}
+.input-wrap.invalid { border-color: #D93036; }
+.input-wrap input {
+  flex: 1; min-width: 0;
+  border: 0; outline: none; background: none;
+  font: inherit; font-size: 16px; color: rgba(4, 4, 3, 0.9);
+  height: 100%;
+}
+.input-wrap input::placeholder { color: rgba(4, 4, 3, 0.35); }
+
+.input-prefix { color: rgba(4, 4, 3, 0.45); font-size: 15.5px; flex: none; }
+
+.eye-btn {
+  flex: none; width: 34px; height: 34px; border-radius: 10px;
+  display: grid; place-items: center;
+  color: rgba(4, 4, 3, 0.45);
+  transition: background-color 0.15s, color 0.15s;
+}
+.eye-btn:hover { background: rgba(4, 4, 3, 0.05); color: rgba(4, 4, 3, 0.8); }
+.eye-btn svg { width: 19px; height: 19px; }
+
+.field-error {
+  display: none;
+  margin-top: 7px;
+  font-size: 13.5px; font-weight: 500;
+  color: #D93036;
+}
+.field-error.show { display: block; }
+
+.field-hint { margin-top: 7px; font-size: 13px; color: var(--auth-gray); }
+
+/* password strength */
+.pw-meter { display: flex; gap: 5px; margin-top: 9px; }
+.pw-meter i {
+  height: 5px; flex: 1; border-radius: 999px;
+  background: rgba(4, 4, 3, 0.1);
+  transition: background-color 0.2s;
+}
+.pw-meter.s1 i:nth-child(-n+1) { background: #D93036; }
+.pw-meter.s2 i:nth-child(-n+2) { background: #F5A623; }
+.pw-meter.s3 i:nth-child(-n+3) { background: #F5D023; }
+.pw-meter.s4 i:nth-child(-n+4) { background: #2E9E4F; }
+.pw-meter-label { margin-top: 6px; font-size: 12.5px; font-weight: 600; color: var(--auth-gray); }
+
+/* primary button */
+.btn-primary {
+  width: 100%;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 16px; font-weight: 500;
+  margin-top: 22px;
+  transition: transform 0.15s var(--ease), filter 0.15s, background-color 0.2s;
+}
+.btn-primary:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.08); }
+.btn-primary:active:not(:disabled) { transform: scale(0.98); }
+.btn-primary:disabled {
+  background: #E5E4E1;
+  color: rgba(4, 4, 3, 0.3);
+  cursor: not-allowed;
+}
+
+/* divider */
+.auth-divider {
+  display: flex; align-items: center; gap: 14px;
+  margin: 22px 0;
+  color: var(--auth-gray);
+  font-size: 15px;
+}
+.auth-divider::before, .auth-divider::after {
+  content: ""; flex: 1; height: 1px; background: rgba(4, 4, 3, 0.1);
+}
+
+/* social buttons */
+.btn-social {
+  width: 100%;
+  height: 56px;
+  border-radius: 999px;
+  border: 0.8px solid rgba(4, 4, 3, 0.18);
+  display: flex; align-items: center; justify-content: center; gap: 11px;
+  font-size: 16px; font-weight: 500;
+  transition: background-color 0.15s, transform 0.15s;
+}
+.btn-social + .btn-social { margin-top: 12px; }
+.btn-social:hover { background: rgba(4, 4, 3, 0.04); transform: translateY(-1px); }
+.btn-social svg { width: 21px; height: 21px; }
+
+.auth-help {
+  margin-top: 22px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-size: 14.5px; color: var(--auth-gray);
+  flex-wrap: wrap;
+}
+.auth-help a { color: rgba(4,4,3,0.75); font-weight: 500; }
+.auth-help a:hover { text-decoration: underline; text-underline-offset: 3px; color: var(--ink); }
+.auth-help .dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.5; }
+
+.auth-swap {
+  margin-top: 34px;
+  text-align: center;
+  font-size: 15px;
+  color: rgba(4, 4, 3, 0.62);
+}
+.auth-swap a {
+  color: var(--purple-accent);
+  font-weight: 600;
+}
+.auth-swap a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.legal-note {
+  margin-top: 18px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(4, 4, 3, 0.5);
+  text-align: center;
+}
+.legal-note a { text-decoration: underline; text-underline-offset: 2px; }
+.legal-note a:hover { color: var(--ink); }
+
+.auth-footer {
+  padding-top: 28px;
+  text-align: center;
+}
+.auth-footer button, .auth-footer a {
+  font-size: 13.5px; color: var(--auth-gray);
+}
+.auth-footer button:hover, .auth-footer a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* success panel */
+.auth-success {
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+.success-badge {
+  width: 86px; height: 86px; margin: 0 auto 22px;
+  border-radius: 50%;
+  background: var(--lime);
+  display: grid; place-items: center;
+}
+.success-badge svg { width: 40px; height: 40px; }
+.auth-success h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.01em; }
+.auth-success p { margin-top: 12px; color: rgba(4,4,3,0.65); font-size: 15.5px; line-height: 1.6; }
+.success-phone {
+  width: 210px; margin: 26px auto 0;
+  border-radius: 26px; overflow: hidden;
+  box-shadow: 0 18px 44px rgba(30, 35, 48, 0.16);
+}
+
+/* ---------------- right: promo pane ---------------- */
+
+.promo-pane {
+  position: relative;
+  background: var(--promo-blue);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 48px;
+}
+.promo-inner {
+  position: relative;
+  width: 100%; max-width: 460px;
+  aspect-ratio: 10 / 11;
+}
+.promo-quote-card {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  opacity: 0; transform: translateY(14px) scale(0.985);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+  pointer-events: none;
+}
+.promo-quote-card.on { opacity: 1; transform: none; }
+.promo-avatars { display: flex; margin-bottom: 26px; }
+.promo-avatars span {
+  width: 74px; height: 74px; border-radius: 50%;
+  border: 3px solid var(--promo-blue);
+  margin-left: -14px;
+  overflow: hidden;
+}
+.promo-avatars span:first-child { margin-left: 0; }
+.promo-quote {
+  color: #fff;
+  font-size: clamp(19px, 1.5vw, 24px);
+  line-height: 1.38;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  max-width: 34ch;
+}
+.promo-who { margin-top: 16px; color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 500; }
+.promo-who strong { display: block; color: #fff; font-weight: 700; font-size: 16px; }
+.promo-dots { display: flex; gap: 7px; margin-top: 30px; }
+.promo-dots button {
+  width: 9px; height: 9px; border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  transition: width 0.25s var(--ease), background-color 0.25s;
+}
+.promo-dots button.on { width: 26px; background: #fff; }
+
+.promo-deco { position: absolute; pointer-events: none; }
+
+/* decorative floating marks on blue pane */
+.promo-pane::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='1.4'%3E%3Cpath d='M0 48a24 24 0 0 1 48 0 24 24 0 0 1 48 0'/%3E%3Cpath d='M-24 48a24 24 0 0 1 48 0' /%3E%3Cpath d='M48 24a24 24 0 0 1 24-24 24 24 0 0 1 24 24' /%3E%3C/g%3E%3C/svg%3E");
+  background-size: 96px 48px;
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 1100px) {
+  .auth-layout { grid-template-columns: 1fr; }
+  .promo-pane { display: none; }
+  .auth-card { max-width: 460px; }
+}
+
+@media (max-width: 480px) {
+  .auth-pane { padding: 18px 22px; }
+  .auth-card { margin-top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-quote-card, .step-dots span, .promo-dots button { transition: none; }
+}
